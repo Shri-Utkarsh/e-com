@@ -32,10 +32,10 @@ const AdminDashboard = () => {
         setLoading(true);
         try {
             if (activeTab === 'products') {
-                const res = await axios.get('http://localhost:5000/api/products');
+                const res = await axios.get('https://e-com-21bs.onrender.com/api/products');
                 setProducts(res.data);
             } else {
-                const res = await axios.get('http://localhost:5000/api/orders');
+                const res = await axios.get('https://e-com-21bs.onrender.com/api/orders');
                 setOrders(res.data);
             }
             setLoading(false);
@@ -54,7 +54,7 @@ const AdminDashboard = () => {
     const handleDeleteProduct = async (id) => {
         if (window.confirm('Are you sure you want to delete this product?')) {
             try {
-                await axios.delete(`http://localhost:5000/api/products/${id}`);
+                await axios.delete(`https://e-com-21bs.onrender.com/api/products/${id}`);
                 setProducts(products.filter(p => p._id !== id));
                 toast.success('Product deleted');
             } catch (error) {
@@ -85,10 +85,10 @@ const AdminDashboard = () => {
 
         try {
             if (editingProduct) {
-                await axios.put(`http://localhost:5000/api/products/${editingProduct._id}`, productData);
+                await axios.put(`https://e-com-21bs.onrender.com/api/products/${editingProduct._id}`, productData);
                 toast.success('Product updated');
             } else {
-                await axios.post('http://localhost:5000/api/products', productData);
+                await axios.post('https://e-com-21bs.onrender.com/api/products', productData);
                 toast.success('Product added');
             }
             setShowForm(false);

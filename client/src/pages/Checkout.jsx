@@ -45,7 +45,7 @@ const Checkout = () => {
         };
 
         try {
-            await axios.post('http://localhost:5000/api/orders', orderData);
+            await axios.post('https://e-com-21bs.onrender.com/api/orders', orderData);
 
             // Simulate processing delay for effect
             setTimeout(() => {
