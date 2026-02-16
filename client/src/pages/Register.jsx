@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api';
 import { toast } from 'react-toastify';
 import GlassCard from '../components/GlassCard';
 import { motion } from 'framer-motion';
@@ -21,7 +21,7 @@ const Register = () => {
         e.preventDefault();
         setIsLoading(true);
         try {
-            const res = await axios.post('https://e-com-21bs.onrender.com/api/auth/register', formData);
+            const res = await api.post('/auth/register', formData);
             login(res.data);
             toast.success('Registration successful');
             navigate('/');

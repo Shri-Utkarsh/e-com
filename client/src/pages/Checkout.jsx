@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { CartContext } from '../context/CartContext';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api';
 import { toast } from 'react-toastify';
 import GlassCard from '../components/GlassCard';
 import { motion } from 'framer-motion';
@@ -45,7 +45,7 @@ const Checkout = () => {
         };
 
         try {
-            await axios.post('https://e-com-21bs.onrender.com/api/orders', orderData);
+            await api.post('/orders', orderData);
 
             // Simulate processing delay for effect
             setTimeout(() => {

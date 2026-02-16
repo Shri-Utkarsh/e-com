@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -32,10 +32,10 @@ const AdminDashboard = () => {
         setLoading(true);
         try {
             if (activeTab === 'products') {
-                const res = await axios.get('https://e-com-21bs.onrender.com/api/products');
+                const res = await api.get('/products');
                 setProducts(res.data);
             } else {
-                const res = await axios.get('https://e-com-21bs.onrender.com/api/orders');
+                const res = await api.get('/orders');
                 setOrders(res.data);
             }
             setLoading(false);
@@ -54,7 +54,7 @@ const AdminDashboard = () => {
     const handleDeleteProduct = async (id) => {
         if (window.confirm('Are you sure you want to delete this product?')) {
             try {
-                await axios.delete(`https://e-com-21bs.onrender.com/api/products/${id}`);
+                await api.delete(`/products/${id}`);
                 setProducts(products.filter(p => p._id !== id));
                 toast.success('Product deleted');
             } catch (error) {
@@ -85,10 +85,10 @@ const AdminDashboard = () => {
 
         try {
             if (editingProduct) {
-                await axios.put(`https://e-com-21bs.onrender.com/api/products/${editingProduct._id}`, productData);
+                await api.put(`/products/${editingProduct._id}`, productData);
                 toast.success('Product updated');
             } else {
-                await axios.post('https://e-com-21bs.onrender.com/api/products', productData);
+                await api.post('/products', productData);
                 toast.success('Product added');
             }
             setShowForm(false);

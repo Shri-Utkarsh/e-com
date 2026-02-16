@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
 import { jwtDecode } from "jwt-decode";
-import axios from 'axios';
 
 export const AuthContext = createContext();
 
@@ -18,13 +17,10 @@ export const AuthProvider = ({ children }) => {
                     logout();
                 } else {
                     setUser(decoded); // Or fetch full user details if needed
-                    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
                 }
             } catch (error) {
                 logout();
             }
-        } else {
-            delete axios.defaults.headers.common['Authorization'];
         }
         setLoading(false);
     }, [token]);
@@ -39,7 +35,6 @@ export const AuthProvider = ({ children }) => {
         setToken(null);
         setUser(null);
         localStorage.removeItem('token');
-        delete axios.defaults.headers.common['Authorization'];
     };
 
     return (

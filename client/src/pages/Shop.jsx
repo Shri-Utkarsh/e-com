@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../api';
 import ProductCard from '../components/ProductCard';
 import { useLocation } from 'react-router-dom';
 import GlassCard from '../components/GlassCard';
@@ -19,7 +19,7 @@ const Shop = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const res = await axios.get('https://e-com-21bs.onrender.com/api/products');
+                const res = await api.get('/products');
                 setProducts(res.data);
                 setFilteredProducts(res.data);
                 setLoading(false);
@@ -84,8 +84,8 @@ const Shop = () => {
                                             key={cat}
                                             onClick={() => setCategory(cat)}
                                             className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 flex justify-between items-center group ${category === cat
-                                                    ? 'bg-brand-gold text-brand-black font-bold'
-                                                    : 'text-brand-white/70 hover:bg-white/5 hover:text-brand-white'
+                                                ? 'bg-brand-gold text-brand-black font-bold'
+                                                : 'text-brand-white/70 hover:bg-white/5 hover:text-brand-white'
                                                 }`}
                                         >
                                             {cat}

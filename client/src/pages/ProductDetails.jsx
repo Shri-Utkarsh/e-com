@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api';
 import { CartContext } from '../context/CartContext';
 import ProductGallery from '../components/ProductGallery';
 import GlassCard from '../components/GlassCard';
@@ -17,7 +17,7 @@ const ProductDetails = () => {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const res = await axios.get(`https://e-com-21bs.onrender.com/api/products/${id}`);
+                const res = await api.get(`/products/${id}`);
                 setProduct(res.data);
                 setLoading(false);
             } catch (error) {

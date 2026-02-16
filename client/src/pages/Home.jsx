@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { Link } from 'react-router-dom';
 import GlassCard from '../components/GlassCard';
 import Hero3D from '../components/Hero3D';
@@ -13,7 +13,7 @@ const Home = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const res = await axios.get('https://e-com-21bs.onrender.com/api/products');
+                const res = await api.get('/products');
                 setProducts(res.data.slice(0, 4));
                 setLoading(false);
             } catch (error) {
