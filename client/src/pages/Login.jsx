@@ -45,6 +45,10 @@ const Login = () => {
                 <GlassCard className="p-8 md:p-10 border-white/10 bg-white/5">
                     <div className="text-center mb-8">
 
+                        
+                        <h2 className="text-brand-white/70 text-sm uppercase tracking-widest">To open Admin panel:-</h2>
+                        <h2 className="text-brand-white/70 text-sm uppercase tracking-widest">email: uttu@gmail.com</h2>
+                        <h2 className="text-brand-white/70 text-sm uppercase tracking-widest">pass: 123</h2>
                         <h2 className="text-brand-white/70 text-sm uppercase tracking-widest">Sign in to your account</h2>
                     </div>
 
